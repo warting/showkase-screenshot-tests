@@ -8,7 +8,6 @@ import com.airbnb.android.showkase.screenshot.testing.ShowkaseScreenshotTest
 import com.airbnb.android.showkase.screenshot.testing.ShowkaseScreenshotType
 import com.facebook.testing.screenshot.Screenshot
 import com.facebook.testing.screenshot.ViewHelpers
-import org.junit.Test
 
 @ShowkaseScreenshot(rootShowkaseClass = ShowkaseRoot::class)
 abstract class ComposeTests : ShowkaseScreenshotTest {
@@ -23,7 +22,8 @@ abstract class ComposeTests : ShowkaseScreenshotTest {
     ) {
         val view = ImageView(InstrumentationRegistry.getInstrumentation().context)
         view.setImageBitmap(screenshotBitmap)
-        ViewHelpers.setupView(view).setExactWidthPx(screenshotBitmap.width).setExactHeightPx(screenshotBitmap.height).layout()
+        ViewHelpers.setupView(view).setExactWidthPx(screenshotBitmap.width)
+            .setExactHeightPx(screenshotBitmap.height).layout()
         Screenshot.snap(view).setName("$group - $name").record()
     }
 }
